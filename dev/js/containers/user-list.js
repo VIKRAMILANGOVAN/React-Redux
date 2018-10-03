@@ -1,20 +1,21 @@
-import React, {Component} from 'react';
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {selectUser} from '../actions/index';
+import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { selectUser } from '../actions/select-user-action';
+import { selectUsername } from '../actions/select-username-action'
 import users from "../config/users";
 
 
 class UserList extends Component {
 
     renderList() {
-        return users.userid.map((user,i) => {
+        return users.userid.map((user, i) => {
             return (
                 <li
                     key={i}
-                    onClick={() => this.props.selectUser(user)}
+                    onClick={() => { this.props.selectUser(user); this.props.selectUsername(users[user].first) }}
                 >
-                {users[user].first}
+                    {users[user].first}
                 </li>
             );
         });
@@ -40,9 +41,10 @@ function mapStateToProps(state) {
 
 // Get actions and pass them as props to to UserList
 //      > now UserList has this.props.selectUser
-function matchDispatchToProps(dispatch){
+function matchDispatchToProps(dispatch) {
     return bindActionCreators({
-      selectUser: selectUser
+        selectUser: selectUser,
+        selectUsername: selectUsername
     }, dispatch);
 }
 

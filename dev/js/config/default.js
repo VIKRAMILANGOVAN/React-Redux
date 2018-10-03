@@ -1,3 +1,4 @@
 export default {
-  activeUser:1
+  activeUser: 0,
+  username: ""
 }

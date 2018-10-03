@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import users from "../config/users";
 
 /*
@@ -24,7 +24,8 @@ class UserDetail extends Component {
 
 // "state.activeUser" is set in reducers/index.js
 function mapStateToProps(state) {
-    const  user  = state.activeUser;
+    const user = state.activeUser;
+    console.log("user", user)
     return {
         user
     };
